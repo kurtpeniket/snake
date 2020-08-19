@@ -11,18 +11,18 @@
     <div class="flex">
         <div class="intro">
             <h1 class="heading">Snake Game</h1>
-                <form>
+                <form onsubmit="return false">
                     <label for="user">Player:</label>
-                    <input id="user" type="text" placeholder="Enter name here..." autocomplete="off">
+                    <input id="user" type="text" placeholder="Enter name here..." autocomplete="off" >
                 </form>
-            <p>Press the start button to begin the game.</p>
-            <p>Use the arrow keys &#8592; &#8593; &#8594; &#8595; to move the snake.</p>
-            <div class="newDiv">
+                <p>Press <span class="key">START</span> or hit the <span class="key">ENTER</span> key to begin the game.</p>
+                <p>Use the arrow keys &#8592; &#8593; &#8594; &#8595; to move the snake.</p>
+                <div class="newDiv">
                 <button id="start">START</button>
+                </div>
+                <div class='grid'></div>   
             </div>
-            <div class='grid'></div>   
-        </div>
-        <div class="table">
+            <div class="table">
             <h1 class="heading">High Scores</h1>
             <ul id="scoreList">
                 <li>#1 </li>
@@ -33,9 +33,7 @@
             </div>
                 <h2 class="heading">Score:<span id="score">0</span></h2>
             </div>
-        
     </div>
-    
     <script src="index.js"></script>
 </body>
 </html>

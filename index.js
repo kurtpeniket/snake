@@ -27,6 +27,8 @@ function createGrid () {
     }
 }
 
+user.focus();
+
 createGrid()
 currentSnake.forEach(index => squares[index].classList.add('snake'))
 
@@ -61,8 +63,10 @@ function move () {
         ) {
             //Game finished
             alert('GAME OVER! You died, better luck next time.');
-            highScores.push(`${user.value}\'s score: ${score}`);
-            scoreList.innerHTML = `${highScores.join('<br>')}`;
+            highScores.push(`<li>${user.value}\'s score: ${score}</li>`);
+            //Possible to sort arr here before adding?
+            scoreList.innerHTML = `${highScores.join('')}`;
+            user.focus();
             return clearInterval(timerId);
         } 
         
@@ -120,8 +124,8 @@ function control (e) {
 //Listeners
 document.addEventListener('keyup', control);
 startButton.addEventListener('click', startGame);
-document.addEventListener('keydown', function () {
-    if (keyCode === 13) {
-        return false;
-    }
-});
+user.addEventListener('keyup', function (e) {
+    if (e.key == 'Enter') {
+        startGame();
+    } e.preventDefault();
+})
