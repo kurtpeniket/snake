@@ -1,0 +1,112 @@
+html, body {
+    margin: 10;
+    padding: 10;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+
+}
+
+.heading {
+    text-transform: uppercase;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: yellow ;
+    font-size: 2rem;
+}
+
+.newDiv {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+#start {
+    font-family: 'VT323', monospace;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 1.5rem;   
+    outline-style: none;
+    margin-right: 20px;
+    background-color: forestgreen;
+    box-shadow: 0 5px #666;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 200px;
+    border: 7px dotted black;
+    background-color: white;
+
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+}
+
+.snake {
+    background-color: forestgreen;
+    
+}
+
+.apple {
+    background-color: firebrick;
+    border-radius: 50%;
+}
+
+#score {
+    padding: 30px; 
+    font-size: 4rem; 
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    color: yellow;
+}
+
+.table {
+    /* margin-left: 15%; */
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+ul {
+    list-style: square;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.points {
+    margin-top: 100%;
+}
+
+#user {
+    background-color: black;
+    color: white;
+    font-family: inherit;
+    font-size: 1.5rem;
+}

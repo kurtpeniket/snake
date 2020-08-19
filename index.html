@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Snake Game</title>
+</head>
+<body>
+    <div class="flex">
+        <div class="intro">
+            <h1 class="heading">Snake Game</h1>
+                <form>
+                    <label for="user">Player:</label>
+                    <input id="user" type="text" placeholder="Enter name here..." autocomplete="off">
+                </form>
+            <p>Press the start button to begin the game.</p>
+            <p>Use the arrow keys &#8592; &#8593; &#8594; &#8595; to move the snake.</p>
+            <div class="newDiv">
+                <button id="start">START</button>
+            </div>
+            <div class='grid'></div>   
+        </div>
+        <div class="table">
+            <h1 class="heading">High Scores</h1>
+            <ul id="scoreList">
+                <li>#1 </li>
+                <li>#2 </li>
+                <li>#3 </li>
+            </ul><br>
+            <div class="points">
+            </div>
+                <h2 class="heading">Score:<span id="score">0</span></h2>
+            </div>
+        
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
