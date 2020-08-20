@@ -15,8 +15,10 @@ let score = 0;
 let intervalTime = 1000;
 let speed = 0.9;
 let timerId = 0;
-
-
+const upArrow = document.getElementById('upArrow');
+const leftArrow = document.getElementById('leftArrow');
+const rightArrow = document.getElementById('rightArrow');
+const downArrow = document.getElementById('downArrow');
 
 function createGrid () {
     for (let i = 0; i < 100; i++) {
@@ -36,7 +38,6 @@ currentSnake.forEach(index => squares[index].classList.add('snake'))
 
 //New game
 function startGame () {
-    // user = prompt('Please enter your name')
     currentSnake.forEach(index => squares[index].classList.remove('snake'));
     squares[appleIndex].classList.remove('apple');
     clearInterval(timerId);
@@ -60,33 +61,35 @@ function move () {
         || (currentSnake[0] % width === 0 && direction === -1) 
         || (currentSnake[0] - width < 0 && direction === -width) 
         || squares[currentSnake[0] + direction].classList.contains('snake')
-        ) {
+        ) 
+        {
             //Game finished
             alert('GAME OVER! You died, better luck next time.');
             highScores.push(`<li>${user.value}\'s score: ${score}</li>`);
+            
             //Possible to sort arr here before adding?
+
             scoreList.innerHTML = `${highScores.join('')}`;
             user.focus();
             return clearInterval(timerId);
-        } 
+        }
         
-
-    const tail = currentSnake.pop();
-    squares[tail].classList.remove('snake');
-    currentSnake.unshift(currentSnake[0] + direction)
-
-    if (squares[currentSnake[0]].classList.contains('apple')) {
-        squares[currentSnake[0]].classList.remove('apple');
-        squares[tail].classList.add('snake');
-        currentSnake.push(tail);
-        generateApple();
-        score++;
-        scoreDisplay.innerHTML = score;
-        clearInterval(timerId)
-        intervalTime = intervalTime * speed;
-        timerId = setInterval (move, intervalTime);   
-    }
-    
+        const tail = currentSnake.pop();
+        squares[tail].classList.remove('snake');
+        currentSnake.unshift(currentSnake[0] + direction)
+        
+        if (squares[currentSnake[0]].classList.contains('apple')) {
+            squares[currentSnake[0]].classList.remove('apple');
+            squares[tail].classList.add('snake');
+            currentSnake.push(tail);
+            generateApple();
+            score++;
+            scoreDisplay.innerHTML = score;
+            clearInterval(timerId)
+            intervalTime = intervalTime * speed;
+            timerId = setInterval (move, intervalTime);   
+        }
+        
     squares[currentSnake[0]].classList.add('snake')
 } 
 
@@ -121,6 +124,28 @@ function control (e) {
     }
 }
 
+function arrowControl (e) {
+    squares[currentIndex].classList.remove('snake')
+
+    switch (e == e) {
+        case rightArrow: 
+            direction = 1; //Right
+            break;
+        case upArrow:
+            direction = -width; //Up
+            break;
+        case leftArrow:
+            direction = -1; //Left
+            break;
+        case downArrow:
+            direction = +width; //Down
+            console.log('ARROW');
+        default:
+            console.log(undefined);
+    }
+}
+
+
 //Listeners
 document.addEventListener('keyup', control);
 startButton.addEventListener('click', startGame);
@@ -128,4 +153,18 @@ user.addEventListener('keyup', function (e) {
     if (e.key == 'Enter') {
         startGame();
     } e.preventDefault();
-})
+});
+
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
+//Arrows for devices without keyboards
+upArrow.addEventListener('click', arrowControl);
+leftArrow.addEventListener('click', arrowControl);
+rightArrow.addEventListener('click', arrowControl);
+downArrow.addEventListener('click', arrowControl);
+

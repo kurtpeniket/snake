@@ -2,7 +2,7 @@ html, body {
     margin: 10;
     padding: 10;
     font-family: 'VT323', monospace;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
     background-color: black;
     color: white;
@@ -14,7 +14,7 @@ html, body {
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-decoration-color: yellow ;
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 .newDiv {
@@ -29,9 +29,10 @@ html, body {
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    font-size: 1.5rem;   
+    font-size: 1.5em;   
     outline-style: none;
-    margin-right: 20px;
+    margin-right: 50px;
+    margin-top: 40px;
     background-color: forestgreen;
     box-shadow: 0 5px #666;
 }
@@ -72,7 +73,7 @@ button:active {
 
 #score {
     padding: 30px; 
-    font-size: 4rem; 
+    font-size: 4em; 
     text-decoration-line: underline;
     text-decoration-style: dotted;
     color: yellow;
@@ -93,14 +94,14 @@ button:active {
 ul {
     list-style: square;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 #user {
     background-color: black;
     color: white;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 form {
@@ -110,4 +111,23 @@ form {
 .key {
     background-color: white;
     color: black;
+}
+
+#arrows {
+    display: none;
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 600px) {
+    body {
+    /* background-color: green; */
+    font-size: 15px;
+    }
+    .flex {
+        display: inline;
+    }
+    #start {
+        width: 70px;
+        height: 70px;
+    }
 }
