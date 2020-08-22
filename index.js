@@ -4,6 +4,7 @@ const startButton = document.getElementById('start');
 const scoreDisplay = document.getElementById('score');
 const scoreList = document.getElementById('scoreList')
 const width = 10;
+let cheats = false;
 let highScores = [];
 let user = document.getElementById('user');
 let squares = [];
@@ -15,6 +16,7 @@ let score = 0;
 let intervalTime = 1000;
 let speed = 0.9;
 let timerId = 0;
+
 const upArrow = document.getElementById('upArrow');
 const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
@@ -55,24 +57,25 @@ function startGame () {
 
 //Movement rules
 function move () {
+
     if (
-        (currentSnake[0] + width >= width*width && direction === width) 
-        || (currentSnake[0] % width === width-1 && direction === 1) 
+           (currentSnake[0] + width >= width * width && direction === width) 
+        || (currentSnake[0] % width === width-1 && direction === 1) //Disable this line for infinite side walls
         || (currentSnake[0] % width === 0 && direction === -1) 
         || (currentSnake[0] - width < 0 && direction === -width) 
         || squares[currentSnake[0] + direction].classList.contains('snake')
-        ) 
-        {
+        )
+        { 
             //Game finished
-            alert('GAME OVER! You died, better luck next time.');
+            alert('GAME OVER! You died, try again!');
             highScores.push(`<li>${user.value}\'s score: ${score}</li>`);
             
-            //Possible to sort arr here before adding?
+            // Possible to sort arr here before adding?
 
             scoreList.innerHTML = `${highScores.join('')}`;
             user.focus();
             return clearInterval(timerId);
-        }
+        } 
         
         const tail = currentSnake.pop();
         squares[tail].classList.remove('snake');
@@ -126,8 +129,8 @@ function control (e) {
 
 function arrowControl (e) {
     squares[currentIndex].classList.remove('snake')
-
-    switch (e == e) {
+    console.log(`arrowControl(${e})`)
+    switch (e) {
         case rightArrow: 
             direction = 1; //Right
             break;
@@ -140,6 +143,7 @@ function arrowControl (e) {
         case downArrow:
             direction = +width; //Down
             console.log('ARROW');
+            break;
         default:
             console.log(undefined);
     }
