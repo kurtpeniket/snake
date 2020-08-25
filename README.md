@@ -1,5 +1,6 @@
-# snake
+# Snake
 
-Retro snake game created in pure JavaScript. 
+## Retro snake game created in pure JavaScript. 
 
-High scores list and score display included.
+
+![snake img](https://i.ibb.co/SvndtCB/Screenshot-20.png)
