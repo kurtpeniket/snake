@@ -36,8 +36,6 @@ user.focus();
 createGrid()
 currentSnake.forEach(index => squares[index].classList.add('snake'))
 
-
-
 //New game
 function startGame () {
     currentSnake.forEach(index => squares[index].classList.remove('snake'));
@@ -69,9 +67,6 @@ function move () {
             //Game finished
             alert('GAME OVER! You died, try again!');
             highScores.push(`<li>${user.value}\'s score: ${score}</li>`);
-            
-            // Possible to sort arr here before adding?
-
             scoreList.innerHTML = `${highScores.join('')}`;
             user.focus();
             return clearInterval(timerId);
@@ -95,7 +90,6 @@ function move () {
         
     squares[currentSnake[0]].classList.add('snake')
 } 
-
 
 //New apples
 function generateApple () {
@@ -161,7 +155,7 @@ user.addEventListener('keyup', function (e) {
 
 window.addEventListener("keydown", function(e) {
     // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
