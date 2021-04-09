@@ -22,7 +22,7 @@ const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
 const downArrow = document.getElementById('downArrow');
 
-function createGrid () {
+const createGrid = () => {
     for (let i = 0; i < 100; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
@@ -37,7 +37,7 @@ createGrid()
 currentSnake.forEach(index => squares[index].classList.add('snake'))
 
 //New game
-function startGame () {
+const startGame = () => {
     currentSnake.forEach(index => squares[index].classList.remove('snake'));
     squares[appleIndex].classList.remove('apple');
     clearInterval(timerId);
@@ -54,8 +54,7 @@ function startGame () {
 }
 
 //Movement rules
-function move () {
-
+const move = () => {
     if (
            (currentSnake[0] + width >= width * width && direction === width) 
         || (currentSnake[0] % width === width-1 && direction === 1) //Disable this line for infinite side walls
@@ -92,7 +91,7 @@ function move () {
 } 
 
 //New apples
-function generateApple () {
+const generateApple = () => {
     do {
         appleIndex = Math.floor(Math.random() * squares.length);
 
@@ -101,7 +100,7 @@ function generateApple () {
 generateApple();
 
 //Key controls
-function control (e) {
+const control = (e) => {
     squares[currentIndex].classList.remove('snake')
 
     switch (e.keyCode) {
@@ -121,7 +120,7 @@ function control (e) {
     }
 }
 
-function arrowControl (e) {
+const arrowControl = (e) => {
     squares[currentIndex].classList.remove('snake')
     console.log(`arrowControl(${e})`)
     switch (e) {
@@ -143,7 +142,6 @@ function arrowControl (e) {
     }
 }
 
-
 //Listeners
 document.addEventListener('keyup', control);
 startButton.addEventListener('click', startGame);
@@ -154,13 +152,13 @@ user.addEventListener('keyup', function (e) {
 });
 
 window.addEventListener("keydown", function(e) {
-    // space and arrow keys
+    //Space and arrow keys
     if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
 
-//Arrows for devices without keyboards
+//Arrows for devices without keyboards? (TODO)
 upArrow.addEventListener('click', arrowControl);
 leftArrow.addEventListener('click', arrowControl);
 rightArrow.addEventListener('click', arrowControl);
